@@ -161,8 +161,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\include\abscission_math.h" />
     <ClInclude Include="..\..\src\include\console.h" />
     <ClInclude Include="..\..\src\include\con_vars.h" />
+    <ClInclude Include="..\..\src\include\cursor.h" />
     <ClInclude Include="..\..\src\include\events.h" />
     <ClInclude Include="..\..\src\include\input.h" />
     <ClInclude Include="..\..\src\include\renderer.h" />

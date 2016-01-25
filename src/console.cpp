@@ -5,11 +5,13 @@
 #include <sdl/SDL.h>
 #include <sdl/SDL_keycode.h>
 
+#include "abscission_math.h"
 #include "console.h"
 #include "types.h"
 #include "input.h"
 #include "con_vars.h"
 #include "renderer.h"
+#include "cursor.h"
 
 
 void Console::draw() {
@@ -17,6 +19,11 @@ void Console::draw() {
 	static std::string console_backlog = "";
 
 	if (g_cvars.b_get("+console")) {
+
+		const SDL_Rect con_pos = { console_x, console_y, console_width, console_height };
+		const SDL_Rect textbox_pos = { console_x + 10, console_y + console_height - 30, console_width - 20, 20 };
+		const SDL_Rect backlog_pos = { console_x + 10, console_y + 10, console_width - 20, console_height - 50 };
+
 		if (!open) {
 			open = true;
 			g_input_manager.text_input = "";
@@ -24,10 +31,37 @@ void Console::draw() {
 			SDL_StartTextInput();
 		}
 
+		bool can_resize_x = (g_input_manager.mouse_x > console_x + console_width - 4 && g_input_manager.mouse_x < console_x + console_width + 4);
+		bool can_resize_y = (g_input_manager.mouse_y > console_y + console_height - 4 && g_input_manager.mouse_y < console_y + console_height + 4);
+		bool in_text_box = g_input_manager.mouse_x > textbox_pos.x && g_input_manager.mouse_x < textbox_pos.x + textbox_pos.w && g_input_manager.mouse_y > textbox_pos.y && g_input_manager.mouse_y < textbox_pos.y + textbox_pos.h;
+		bool can_move = g_input_manager.mouse_y > console_y && g_input_manager.mouse_y < console_y + 10	&& g_input_manager.mouse_x > console_x && g_input_manager.mouse_x < console_x + 780;
+
+		if (can_resize_x) {
+			if (can_resize_y) {
+				set_cursor(SDL_SYSTEM_CURSOR_SIZENWSE);
+			}
+			else {
+				set_cursor(SDL_SYSTEM_CURSOR_SIZEWE);
+			}
+		}
+		else if (can_resize_y) {
+			set_cursor(SDL_SYSTEM_CURSOR_SIZENS);
+		}
+		else if (in_text_box) {
+			set_cursor(SDL_SYSTEM_CURSOR_IBEAM);
+		}
+		else if (can_move) {
+			set_cursor(SDL_SYSTEM_CURSOR_HAND);
+		}
+		else {
+			set_cursor(SDL_SYSTEM_CURSOR_ARROW);
+		}
+
+
 		if (g_input_manager.click) {
 
 			if (resizing_x) {
-				console_width = g_input_manager.mouse_x - console_x;
+				console_width = MAX(g_input_manager.mouse_x - console_x, 100);
 			}
 
 			if (!resizing_x && g_input_manager.mouse_x > console_x + console_width - 4 && g_input_manager.mouse_x < console_x + console_width + 4) {
@@ -35,7 +69,7 @@ void Console::draw() {
 			}
 
 			if (resizing_y) {
-				console_height = g_input_manager.mouse_y - console_y;
+				console_height = MAX(g_input_manager.mouse_y - console_y, 100);
 			}
 
 			if (!resizing_y && g_input_manager.mouse_y > console_y + console_height - 4 && g_input_manager.mouse_y < console_y + console_height + 4) {
@@ -57,11 +91,6 @@ void Console::draw() {
 			resizing_x = false;
 			resizing_y = false;
 		}
-
-
-		const SDL_Rect con_pos = { console_x, console_y, console_width, console_height };
-		const SDL_Rect textbox_pos = { console_x + 10, console_y + console_height - 30, console_width - 20, 20 };
-		const SDL_Rect backlog_pos = { console_x + 10, console_y + 10, console_width - 20, console_height - 50 };
 
 		if (g_input_manager.click_thisframe) {
 			if (g_input_manager.mouse_x > textbox_pos.x && g_input_manager.mouse_x < textbox_pos.x + textbox_pos.w

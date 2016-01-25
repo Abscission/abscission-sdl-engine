@@ -1,6 +1,7 @@
 #include "events.h"
 #include "input.h"
 #include "con_vars.h"
+#include "abscission_math.h"
 #include <sdl\SDL.h>
 
 

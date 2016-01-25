@@ -252,6 +252,12 @@
     <ClInclude Include="..\..\src\include\sdl\SDL_ttf.h">
       <Filter>Header Files\SDL</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\include\cursor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\include\abscission_math.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\con_vars.cpp">

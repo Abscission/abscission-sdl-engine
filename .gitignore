@@ -1,4 +1,5 @@
-# Created by https://www.gitignore.io/api/isual,windows,visualstudio
+
+# Created by https://www.gitignore.io/api/isual,windows,visualstudio
 
 #!! ERROR: isual is undefined. Use list command to see defined gitignore types !!#
 
@@ -41,11 +42,10 @@ $RECYCLE.BIN/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
-x64/
-x86/
 bld/
 [Bb]in/
 [Oo]bj/
+[Bb]uild/
 
 # Visual Studio 2015 cache/options directory
 .vs/
