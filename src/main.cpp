@@ -11,6 +11,7 @@
 #include "events.h"
 #include "input.h"
 #include "console.h"
+#include "config.h"
 
 Renderer* g_renderer;
 
@@ -29,6 +30,10 @@ int main(int, char**) {
 
 	Sprite s;
 	s.load(r.renderer, "test.agi");
+
+	Config c("test.cfg");
+	c.Set("bind t +right");
+	c.Reload();
 
 	console.run_command("bind escape +quit");
 
