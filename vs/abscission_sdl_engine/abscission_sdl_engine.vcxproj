@@ -241,6 +241,7 @@
     <ClInclude Include="..\..\src\include\sdl\SDL_video.h" />
     <ClInclude Include="..\..\src\include\sprite.h" />
     <ClInclude Include="..\..\src\include\types.h" />
+    <ClInclude Include="..\..\src\include\windowing.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\console.cpp" />
@@ -250,6 +251,7 @@
     <ClCompile Include="..\..\src\main.cpp" />
     <ClCompile Include="..\..\src\renderer.cpp" />
     <ClCompile Include="..\..\src\sprite.cpp" />
+    <ClCompile Include="..\..\src\windowing.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

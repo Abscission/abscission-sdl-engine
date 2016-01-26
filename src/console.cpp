@@ -34,7 +34,7 @@ void Console::draw() {
 		bool can_resize_x = (g_input_manager.mouse_x > console_x + console_width - 4 && g_input_manager.mouse_x < console_x + console_width + 4);
 		bool can_resize_y = (g_input_manager.mouse_y > console_y + console_height - 4 && g_input_manager.mouse_y < console_y + console_height + 4);
 		bool in_text_box = g_input_manager.mouse_x > textbox_pos.x && g_input_manager.mouse_x < textbox_pos.x + textbox_pos.w && g_input_manager.mouse_y > textbox_pos.y && g_input_manager.mouse_y < textbox_pos.y + textbox_pos.h;
-		bool can_move = g_input_manager.mouse_y > console_y && g_input_manager.mouse_y < console_y + 10	&& g_input_manager.mouse_x > console_x && g_input_manager.mouse_x < console_x + 780;
+		bool can_move = g_input_manager.mouse_y > console_y && g_input_manager.mouse_y < console_y + 10	&& g_input_manager.mouse_x > console_x && g_input_manager.mouse_x < console_x + console_width;
 
 		if (can_resize_x) {
 			if (can_resize_y) {

@@ -11,6 +11,7 @@
 #include "events.h"
 #include "input.h"
 #include "console.h"
+#include "windowing.h"
 
 Renderer* g_renderer;
 
@@ -41,6 +42,10 @@ int main(int, char**) {
 	console.run_command("bindtoggle tilde +console");
 
 	float pos = 100;
+	
+	Window w;
+	w.open();
+	w.close();
 
 	while (!g_cvars.b_get("+quit")) {
 		sdl_event_pump();
@@ -56,6 +61,8 @@ int main(int, char**) {
 		r.draw_text("Hello, World!\ntest", 100, 100, 25);
 
 		r.draw_sprite(s, (int)pos, 10, 50);
+
+		w.update_and_draw();
 
 		console.draw();
 
