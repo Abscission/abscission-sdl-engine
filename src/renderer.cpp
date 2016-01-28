@@ -14,7 +14,7 @@ void Renderer::init(int width, int height, const char * title) {
 		SDL_SetWindowSize(window, width, height);
 	}
 	else {
-		window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, atoi(g_cvars.get("r_resolution_x").c_str()), height, 0);
+		window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, 0);
 	}
 	if (!renderer) renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 }
@@ -31,7 +31,7 @@ void Renderer::refresh() {
 	SDL_RenderClear(renderer);
 }
 
-void Renderer::draw_sprite(Sprite & spr, int x, int y, float scale) {
+void Renderer::draw_sprite(Image & spr, int x, int y, float scale) {
 	SDL_Rect dst = { x, y, int(spr.width * scale), int(spr.height * scale) };
 	SDL_RenderCopy(renderer, spr.texture, 0, &dst);
 }

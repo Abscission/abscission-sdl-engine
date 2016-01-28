@@ -6,7 +6,7 @@
 //Forward declaration of renderer for use with friend
 class Renderer;
 
-class Sprite {
+class Image {
 private:
 	//This is the header used in the Abscission image format
 	struct Header {
@@ -29,7 +29,7 @@ public:
 	void load(SDL_Renderer* renderer, const char * filename);
 
 	
-	~Sprite();
+	~Image();
 
 	friend class Renderer;
 };

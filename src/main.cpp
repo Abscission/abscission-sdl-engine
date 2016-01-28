@@ -29,7 +29,7 @@ int main(int, char**) {
 	Renderer r;
 	g_renderer = &r;
 
-	Sprite s;
+	Image s;
 	s.load(r.renderer, "test.agi");
 
 	Config c("test.cfg");
@@ -45,6 +45,8 @@ int main(int, char**) {
 	console.run_command("bind d +right");
 
 	console.run_command("bindtoggle tilde +console");
+
+	g_input_manager.save_bindings("bindings.cfg");
 
 	float pos = 100;
 	

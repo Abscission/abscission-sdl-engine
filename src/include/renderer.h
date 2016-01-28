@@ -20,7 +20,7 @@ public:
 	~Renderer();
 	
 	//draw the sprite spr at location {x, y} with a scale factor of scale
-	void draw_sprite(Sprite& spr, int x = 0, int y = 0, float scale = 1.0f);
+	void draw_sprite(Image& spr, int x = 0, int y = 0, float scale = 1.0f);
 
 	SDL_Rect draw_text(const char * text, int x, int y, int font_size, SDL_Color c = SDL_Color{ 255, 255,255,255 });
 

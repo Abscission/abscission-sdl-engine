@@ -244,6 +244,7 @@
     <ClInclude Include="..\..\src\include\windowing.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\config.cpp" />
     <ClCompile Include="..\..\src\console.cpp" />
     <ClCompile Include="..\..\src\con_vars.cpp" />
     <ClCompile Include="..\..\src\events.cpp" />

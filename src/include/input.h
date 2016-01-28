@@ -6,6 +6,8 @@
 #include "con_vars.h"
 #include <sdl/SDL_keycode.h>
 
+//extern std::map <std::string, SDL_Keycode> keys;
+
 class InputManager {
 private:
 	std::map<SDL_Keycode, std::string> bindings;
@@ -17,6 +19,10 @@ public:
 
 	void bind(SDL_Keycode c, std::string binding);
 	void bind_toggle(SDL_Keycode c, std::string binding);
+
+	void save_bindings(std::string filename);
+	void load_bindings(std::string filename);
+	
 
 	std::string text_input;
 

@@ -12,7 +12,7 @@
 #include "con_vars.h"
 #include "renderer.h"
 #include "cursor.h"
-
+#include "config.h"
 
 void Console::draw() {
 	Renderer& r = *g_renderer;
@@ -137,15 +137,15 @@ void Console::draw() {
 
 
 std::string Console::run_command(std::string command) {	
-	const static std::map <std::string, SDL_Keycode> keys{
-		{ "q", SDLK_q },{ "w", SDLK_w},{ "e", SDLK_e },{ "r", SDLK_r },{ "t", SDLK_t },{ "y", SDLK_y },{ "u", SDLK_u },{ "i", SDLK_i },{ "o", SDLK_o },{ "p", SDLK_p },
+	std::map <std::string, SDL_Keycode> keys{
+		{ "q", SDLK_q },{ "w", SDLK_w },{ "e", SDLK_e },{ "r", SDLK_r },{ "t", SDLK_t },{ "y", SDLK_y },{ "u", SDLK_u },{ "i", SDLK_i },{ "o", SDLK_o },{ "p", SDLK_p },
 		{ "a", SDLK_a },{ "s", SDLK_s },{ "d", SDLK_d },{ "f",SDLK_f },{ "g", SDLK_g },{ "h",SDLK_h },{ "j", SDLK_j },{ "k", SDLK_k },{ "l", SDLK_l },
 		{ "z", SDLK_z },{ "x", SDLK_x },{ "c", SDLK_c },{ "v", SDLK_v },{ "b", SDLK_b },{ "n", SDLK_n },{ "m", SDLK_m },{ "comma", SDLK_COMMA },{ "period", SDLK_PERIOD },
-		{ "f1", SDLK_F1  },{ "f2", SDLK_F2 },{ "f3", SDLK_F3 },{ "f4", SDLK_F4 },{ "f5", SDLK_F5 },{ "f6", SDLK_F6 },{ "f7", SDLK_F7 },{ "f8", SDLK_F8 },{ "f9", SDLK_F9 },{ "f10", SDLK_F10 },{ "f11", SDLK_F11 },{ "f12", SDLK_F12 },
+		{ "f1", SDLK_F1 },{ "f2", SDLK_F2 },{ "f3", SDLK_F3 },{ "f4", SDLK_F4 },{ "f5", SDLK_F5 },{ "f6", SDLK_F6 },{ "f7", SDLK_F7 },{ "f8", SDLK_F8 },{ "f9", SDLK_F9 },{ "f10", SDLK_F10 },{ "f11", SDLK_F11 },{ "f12", SDLK_F12 },
 		{ "space", SDLK_SPACE },{ "shift", SDLK_LSHIFT },{ "left_shift", SDLK_LSHIFT },{ "right_shift", SDLK_RSHIFT },
 		{ "ctrl", SDLK_LCTRL },{ "control", SDLK_LCTRL },{ "left_ctrl", SDLK_LCTRL },{ "right_ctrl", SDLK_RCTRL },
 		{ "left_control", SDLK_LCTRL },{ "right_control", SDLK_RCTRL },{ "tab", SDLK_TAB },
-		{ "up", SDLK_UP },{ "down", SDLK_DOWN },{ "left", SDLK_LEFT },{ "right", SDLK_RIGHT }, {"escape", SDLK_ESCAPE}, {"tilde", SDLK_BACKQUOTE}
+		{ "up", SDLK_UP },{ "down", SDLK_DOWN },{ "left", SDLK_LEFT },{ "right", SDLK_RIGHT },{ "escape", SDLK_ESCAPE },{ "tilde", SDLK_BACKQUOTE }
 	};
 
 	std::stringstream output;
@@ -177,6 +177,19 @@ std::string Console::run_command(std::string command) {
 		if (cmd2 == "reset") {
 			if (params2 == "renderer") {
 				g_renderer->init();
+			}
+		}
+		else if (cmd2 == "flush") {
+			if (params2 == "bindings") {
+				g_input_manager.save_bindings("bindings.cfg");
+			}
+		}
+		else if (cmd2 == "reload") {
+			if (params2 == "bindings") {
+				g_input_manager.load_bindings("bindings.cfg");
+			}
+			else {
+				Config c(params2);
 			}
 		}
 		else {

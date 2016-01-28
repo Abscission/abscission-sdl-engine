@@ -5,9 +5,14 @@
 #include <cstdlib>
 #include <cstring>
 
-void Sprite::load(SDL_Renderer* renderer, const char * filename) {
+void Image::load(SDL_Renderer* renderer, const char * filename) {
 	FILE* file;
 	fopen_s(&file, filename, "rb");
+
+	if (!file) {
+		printf("Failed to load file %s\n", filename);
+		exit(-1);
+	}
 
 	fseek(file, 0L, SEEK_END);
 	size_t len = ftell(file);
@@ -41,6 +46,6 @@ void Sprite::load(SDL_Renderer* renderer, const char * filename) {
 	
 }
 
-Sprite::~Sprite() {
+Image::~Image() {
 
 }
