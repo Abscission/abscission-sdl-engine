@@ -3,6 +3,10 @@
 #include <string>
 #include "sprite.h"
 
+const int card_size_x = 324;
+const int card_size_y = 512;
+
+
 class Card {
 private:
 	//card stats
