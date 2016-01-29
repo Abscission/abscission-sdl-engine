@@ -2,8 +2,8 @@
 #include <map>
 #include <sstream>
 
-#include <sdl/SDL.h>
-#include <sdl/SDL_keycode.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_keycode.h>
 
 #include "abscission_math.h"
 #include "console.h"

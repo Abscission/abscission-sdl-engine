@@ -1,7 +1,7 @@
 #pragma once
 
 #include "types.h"
-#include <sdl/SDL_render.h>
+#include <SDL2/SDL_render.h>
 
 //Forward declaration of renderer for use with friend
 class Renderer;
