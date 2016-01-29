@@ -1,9 +1,9 @@
 #include "game_state.h"
 
 
-void GameState::register_game_state(GameState * G) {
+size_t GameState::register_game_state(GameState * G) {
 	states.push_back(G);
-	
+	return states.size() - 1;
 }
 
 void GameState::change_game_state(int i) {

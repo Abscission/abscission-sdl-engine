@@ -4,6 +4,11 @@
 
 #include "sprite.h"
 
+enum text_align {
+	ALIGN_LEFT,
+	ALIGN_RIGHT
+};
+
 //This class handles rendering
 class Renderer {
 public:
@@ -23,9 +28,12 @@ public:
 	~Renderer();
 	
 	//draw the sprite spr at location {x, y} with a scale factor of scale
-	void draw_sprite(Image& spr, int x = 0, int y = 0, float scale = 1.0f);
+	void draw_sprite(Image& spr, int x, int y, float scale = 1.0f);
+	void draw_sprite(Image& spr, int x, int y, float scale, double angle);
 
-	SDL_Rect draw_text(const char * text, int x, int y, int font_size, SDL_Color c = SDL_Color{ 255, 255,255,255 }, int wrap_length = 1000);
+	void draw_rect(int x, int y, int w, int h, SDL_Color c = SDL_Color{ 0,0,0,255 });
+
+	SDL_Rect draw_text(const char * text, int x, int y, int font_size, SDL_Color c = SDL_Color{ 255, 255,255,255 }, int wrap_length = 1000, bool flip = false, text_align align = ALIGN_LEFT);
 	SDL_Surface* draw_text_to_surface(const char * text, int font_size, SDL_Color c = SDL_Color{ 255, 255,255,255 }, int wrap_length = 1000);
 
 	//Call this after all drawing is finished each frame

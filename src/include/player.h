@@ -11,7 +11,7 @@ public:
 
 	std::list<u64> hand;
 	std::vector<u64> deck;
-	std::list<u64> on_board;
+	std::list<Card> on_board;
 	std::list<u64> discarded;
 
 	Player();

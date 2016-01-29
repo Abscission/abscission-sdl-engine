@@ -115,7 +115,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;%(AdditionalDependencies);SDL2_ttf.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_mixer.lib;%(AdditionalDependencies);SDL2_ttf.lib</AdditionalDependencies>
       <EntryPointSymbol>
       </EntryPointSymbol>
       <SubSystem>Windows</SubSystem>
@@ -153,7 +153,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;%(AdditionalDependencies);SDL2_ttf.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_mixer.lib;%(AdditionalDependencies);SDL2_ttf.lib</AdditionalDependencies>
       <EntryPointSymbol>
       </EntryPointSymbol>
       <SubSystem>Windows</SubSystem>
@@ -162,6 +162,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\include\abscission_math.h" />
+    <ClInclude Include="..\..\src\include\audio.h" />
     <ClInclude Include="..\..\src\include\card.h" />
     <ClInclude Include="..\..\src\include\console.h" />
     <ClInclude Include="..\..\src\include\con_vars.h" />
@@ -169,6 +170,8 @@
     <ClInclude Include="..\..\src\include\database.h" />
     <ClInclude Include="..\..\src\include\events.h" />
     <ClInclude Include="..\..\src\include\game_state.h" />
+    <ClInclude Include="..\..\src\include\gs_cardgame.h" />
+    <ClInclude Include="..\..\src\include\gs_menu.h" />
     <ClInclude Include="..\..\src\include\input.h" />
     <ClInclude Include="..\..\src\include\player.h" />
     <ClInclude Include="..\..\src\include\renderer.h" />
@@ -243,6 +246,7 @@
     <ClInclude Include="..\..\src\include\sdl\SDL_types.h" />
     <ClInclude Include="..\..\src\include\sdl\SDL_version.h" />
     <ClInclude Include="..\..\src\include\sdl\SDL_video.h" />
+    <ClInclude Include="..\..\src\include\sprite.h" />
     <ClInclude Include="..\..\src\include\types.h" />
     <ClInclude Include="..\..\src\include\windowing.h" />
   </ItemGroup>
@@ -255,6 +259,8 @@
     <ClCompile Include="..\..\src\con_vars.cpp" />
     <ClCompile Include="..\..\src\events.cpp" />
     <ClCompile Include="..\..\src\game_state.cpp" />
+    <ClCompile Include="..\..\src\gs_menu.cpp" />
+    <ClCompile Include="..\..\src\include\audio.cpp" />
     <ClCompile Include="..\..\src\include\player.cpp" />
     <ClCompile Include="..\..\src\input.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />

@@ -158,7 +158,7 @@ std::string Console::run_command(std::string command) {
 		{ "numlock", SDLK_NUMLOCKCLEAR},{ "kp/", SDLK_KP_DIVIDE },{ "kp*", SDLK_KP_MULTIPLY }, { "kp-", SDLK_KP_MINUS }, { "kp+", SDLK_KP_PLUS }, { "kp.", SDLK_KP_PERIOD }, { "kpenter", SDLK_KP_ENTER},
 		//Other keys
 		{ "ins", SDLK_INSERT },{ "insert", SDLK_INSERT },{ "home", SDLK_HOME },{ "pgup", SDLK_PAGEUP },{ "pageup", SDLK_PAGEUP },{ "pgdn", SDLK_PAGEDOWN },{ "pgdown", SDLK_PAGEDOWN },{ "pagedown", SDLK_PAGEDOWN },{ "del", SDLK_DELETE },{ "delete", SDLK_DELETE },{ "end", SDLK_END },{ "scrlk", SDLK_SCROLLLOCK },{ "scrolllock", SDLK_SCROLLLOCK },{ "pause", SDLK_PAUSE}
-};
+	};
 
 	std::stringstream output;
 

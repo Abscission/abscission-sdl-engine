@@ -1,6 +1,6 @@
 
 #include "sprite.h"
-
+#include "SDL/SDL.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -28,6 +28,7 @@ void Image::load(SDL_Renderer* renderer, const char * filename) {
 	height = header->height;
 	has_transparency = header->has_transparency;
 
+	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "best");
 	texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, width, height);
 
 	void* pixels;
@@ -43,7 +44,7 @@ void Image::load(SDL_Renderer* renderer, const char * filename) {
 		filename, len, sizeof(Header), width, height, has_transparency ? "true" : "false");
 
 	SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_BLEND);
-	
+	loaded = true;
 }
 
 Image::~Image() {

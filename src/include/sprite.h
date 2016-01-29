@@ -25,7 +25,8 @@ private:
 	unsigned int has_transparency;
 
 public:
-	
+	bool loaded;
+
 	void load(SDL_Renderer* renderer, const char * filename);
 
 	

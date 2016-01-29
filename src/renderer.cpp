@@ -36,9 +36,20 @@ void Renderer::draw_sprite(Image & spr, int x, int y, float scale) {
 	SDL_RenderCopy(renderer, spr.texture, 0, &dst);
 }
 
+void Renderer::draw_sprite(Image & spr, int x, int y, float scale, double angle) {
+	SDL_Rect dst = { x, y, int(spr.width * scale), int(spr.height * scale) };
+	SDL_RenderCopyEx(renderer, spr.texture, 0, &dst, angle, 0, SDL_FLIP_NONE);
+}
+
+void Renderer::draw_rect(int x, int y, int w, int h, SDL_Color c) {
+	SDL_Rect r{ x, y, w, h };
+	SDL_SetRenderDrawColor(renderer, c.r, c.g, c.b, c.a);
+	SDL_RenderFillRect(renderer, &r);
+}
+
 static TTF_Font *fonts[100];
 
-SDL_Rect Renderer::draw_text(const char * text, int x, int y, int font_size, SDL_Color c, int wrap_length) {
+SDL_Rect Renderer::draw_text(const char * text, int x, int y, int font_size, SDL_Color c, int wrap_length, bool flip, text_align align) {
 
 	SDL_Surface *text_surface = draw_text_to_surface(text, font_size, c, wrap_length);
 	
@@ -47,9 +58,9 @@ SDL_Rect Renderer::draw_text(const char * text, int x, int y, int font_size, SDL
 	int iW, iH;
 	SDL_QueryTexture(texture, NULL, NULL, &iW, &iH);
 
-	SDL_Rect rect{ x, y, iW, iH };
+	SDL_Rect rect{ (align == ALIGN_RIGHT) ? x - iW : x, y, iW, iH };
 
-	SDL_RenderCopy(renderer, texture, 0, &rect);
+	SDL_RenderCopyEx(renderer, texture, 0, &rect, flip ? 180 : 0, 0, SDL_FLIP_NONE);
 	SDL_FreeSurface(text_surface);
 	SDL_DestroyTexture(texture);
 

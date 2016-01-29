@@ -7,11 +7,14 @@ Player::Player() {
 	deck.push_back(0);
 	deck.push_back(0);
 	deck.push_back(1);
-	deck.push_back(1);
+	deck.push_back(2);
 	deck.push_back(0);
 
 	shuffle();
 
+	draw();
+	draw();
+	draw();
 	draw();
 	draw();
 
@@ -25,8 +28,11 @@ void Player::shuffle() {
 }
 
 u64 Player::draw() {
-	u64 ret = deck.back();
-	deck.pop_back();
-	hand.push_back(ret);
-	return ret;
+	if (deck.size()) {
+		u64 ret = deck.back();
+		deck.pop_back();
+		hand.push_back(ret);
+		return ret;
+	}
+	return 0xffffffffffffffff;
 }

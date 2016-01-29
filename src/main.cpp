@@ -7,6 +7,7 @@
 
 #include "sprite.h"
 #include "renderer.h"
+#include "audio.h"
 #include "con_vars.h"
 #include "events.h"
 #include "input.h"
@@ -16,22 +17,22 @@
 
 #include "database.h"
 #include "card.h"
-#include "game_state.h"
 
+//game states
+#include "game_state.h"
+#include "gs_menu.h"
+#include "gs_cardgame.h"
 
 Renderer* g_renderer;
 
 int main(int, char**) {
-
-
-
 	SDL_Init(SDL_INIT_EVERYTHING);
 
 	TTF_Init();
 
 	SDL_StopTextInput();
 
-	Config c("test.cfg");
+	Config c("config.cfg");
 	c.Reload();
 
 	Renderer r;
@@ -47,20 +48,36 @@ int main(int, char**) {
 
 	console.run_command("bindtoggle tilde +console");
 
+	g_input_manager.load_bindings("bindings.cfg");
 	g_input_manager.save_bindings("bindings.cfg");
 
-	Card a("Generic Monster", "This fearsome beast will be so generic it makes you cringe.");
+	g_sound_manager.init();
+
+	Card a("Generic Monster", "This fearsome beast will be so generic it makes you cringe.", 800);
 	a.picture.load(r.renderer, "assets/generic monster.agi");
 
 	Card b("Yellow Monster", "This beast is much better than the Generic Monster because of its apealing yellow colour.");
 	b.picture.load(r.renderer, "assets/yellow monster.agi");
+	
+	Card d("Sword of Cutting", "This is a pretty generic equipment card. It would prbably go well with the Generic Monster.", 0, 0, 0, ct_equipment);
+	d.picture.load(r.renderer, "assets/sword.agi");
+	d.e = e_attackboost;
+	d.attack_boost = 100;
 
 	g_card_db.set(a);
 	g_card_db.set(b);
+	g_card_db.set(d);
 
-	CardState cgs;
-	GameState::register_game_state((GameState*)&cgs);
-	GameState::change_game_state(0);
+	MenuState menu_state;
+	size_t menu_state_id = GameState::register_game_state((GameState*)&menu_state);
+
+	CardState cardgame_state;
+	size_t cardgame_state_id = GameState::register_game_state((GameState*)&cardgame_state);
+	if (menu_state_id) 1;
+
+	GameState::change_game_state((int)cardgame_state_id);
+
+	g_sound_manager.play_file("assets/Town_-_Quiet_Country_Village.mp3");
 
 	while (!g_cvars.b_get("+quit")) {
 		sdl_event_pump();
@@ -71,6 +88,8 @@ int main(int, char**) {
 		console.draw();
 		r.refresh();
 	}
+
+	g_input_manager.save_bindings("bindings.cfg");
 
 	TTF_Quit();
 	SDL_Quit();
