@@ -3,13 +3,13 @@
 #include <vector>
 
 class GameState {
-private:
-	static std::vector<GameState*> states;
+public:
+	//std::vector<GameState*> states;
 	static GameState* current;
 
 public:
-	static void register_game_state(GameState* G);
-	static void change_game_state(int i);
+	//static void register_game_state(GameState* G);
+	//static void change_game_state(int i);
 
 	virtual void init() = 0;
 	virtual void shutdown() = 0;

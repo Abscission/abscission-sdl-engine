@@ -16,6 +16,12 @@
     <Filter Include="Header Files\SDL">
       <UniqueIdentifier>{93bb778f-2a4f-4ee4-bdd3-15ade45369fc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\game_states">
+      <UniqueIdentifier>{4742d8ea-6f5b-44c6-a6a8-9ec42173ebe0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\game_states">
+      <UniqueIdentifier>{c0d6dec3-0161-43fd-980a-82f029915e74}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\include\sdl\begin_code.h">
@@ -243,9 +249,6 @@
     <ClInclude Include="..\..\src\include\renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\include\sprite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\include\types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -260,6 +263,15 @@
     </ClInclude>
     <ClInclude Include="..\..\src\include\windowing.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\include\card.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\include\database.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\include\game_state.h">
+      <Filter>Header Files\game_states</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -289,6 +301,15 @@
     </ClCompile>
     <ClCompile Include="..\..\src\config.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_state.cpp">
+      <Filter>Source Files\game_states</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\card.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gs_cardgame.cpp">
+      <Filter>Source Files\game_states</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -14,11 +14,17 @@
 #include "windowing.h"
 #include "config.h"
 
+#include "database.h"
+#include "card.h"
+
 Renderer* g_renderer;
 
 int main(int, char**) {
 
+
+
 	SDL_Init(SDL_INIT_EVERYTHING);
+
 	TTF_Init();
 
 	SDL_StopTextInput();
@@ -54,16 +60,36 @@ int main(int, char**) {
 	w.open();
 	w.close();
 
+	Card a("Generic Monster", "This fearsome beast will be so generic it\nmakes you cringe.");
+	a.picture.load(r.renderer, "assets/generic monster.agi");
+
+	Database<Card> cards;
+
+	cards.set(a);
+
+	float card_x = 4;
+	float card_y = 4;
+	float card_scale = 0.5f;
+
 	while (!g_cvars.b_get("+quit")) {
 		sdl_event_pump();
 
 		if (g_cvars.b_get("+left")) {
-			pos-= 0.01f;
+			card_x-= 0.05f;
 		}
 
 		if (g_cvars.b_get("+right")) {
-			pos += 0.01f;
+			card_x += 0.05f;
 		}
+
+		if (g_cvars.b_get("+scaleup")) {
+			card_scale += 0.005f;
+		}
+
+		if (g_cvars.b_get("+scaledown")) {
+			card_scale -= 0.005f;
+		}
+
 
 		r.draw_text("Hello, World!\ntest", 100, 100, 25);
 
@@ -72,6 +98,8 @@ int main(int, char**) {
 		w.update_and_draw();
 
 		console.draw();
+
+		a.render((int)card_x, (int)card_y, card_scale);
 
 		r.refresh();
 	}

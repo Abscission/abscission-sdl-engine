@@ -37,9 +37,9 @@ void Renderer::draw_sprite(Image & spr, int x, int y, float scale) {
 }
 
 SDL_Rect Renderer::draw_text(const char * text, int x, int y, int font_size, SDL_Color c) {
-	static TTF_Font *fonts[50];
+	static TTF_Font *fonts[500];
 	if (fonts[font_size] == nullptr) {
-		fonts[font_size] = TTF_OpenFont("arial.ttf", font_size);
+		fonts[font_size] = TTF_OpenFont("open_sans.ttf", font_size);
 	}
 
 	SDL_Surface *text_surface;
