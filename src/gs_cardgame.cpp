@@ -5,7 +5,7 @@
 #include "renderer.h"
 #include "input.h"
 #include "abscission_math.h"
-#include "Windows.h"
+
 void CardState::init() {
 	player_a = Player();
 	player_b = Player();
