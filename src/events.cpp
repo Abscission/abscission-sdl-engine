@@ -2,7 +2,7 @@
 #include "input.h"
 #include "con_vars.h"
 #include "abscission_math.h"
-#include <sdl\SDL.h>
+#include <SDL2/SDL.h>
 
 
 void sdl_event_pump(){

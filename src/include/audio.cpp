@@ -8,9 +8,17 @@ void SoundManager::init() {
 
 void SoundManager::play_file(char * file) {
 	Mix_Music* music = Mix_LoadMUS(file);
+	if (Mix_PlayMusic(music, 1) == -1) {
+		OutputDebugStringA(Mix_GetError());
+	}
+}
+
+void SoundManager::play_file_loop(char * file) {
+	Mix_Music* music = Mix_LoadMUS(file);
 	if (Mix_PlayMusic(music, -1) == -1) {
 		OutputDebugStringA(Mix_GetError());
 	}
 }
+
 
 SoundManager g_sound_manager;

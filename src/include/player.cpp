@@ -1,4 +1,5 @@
 #include "player.h"
+#include "audio.h"
 #include <random>
 #include <algorithm>
 
@@ -9,6 +10,11 @@ Player::Player() {
 	deck.push_back(1);
 	deck.push_back(2);
 	deck.push_back(0);
+	deck.push_back(2);
+	deck.push_back(0);
+	deck.push_back(0);
+	deck.push_back(1);
+	deck.push_back(1);
 
 	shuffle();
 
@@ -18,6 +24,7 @@ Player::Player() {
 	draw();
 	draw();
 
+	g_sound_manager.play_file("assets/card draw.ogg");
 }
 
 void Player::shuffle() {
@@ -34,5 +41,8 @@ u64 Player::draw() {
 		hand.push_back(ret);
 		return ret;
 	}
+
+	
+
 	return 0xffffffffffffffff;
 }

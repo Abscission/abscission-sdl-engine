@@ -1,9 +1,9 @@
 
 #include <cstdio>
 
-#include <sdl/SDL.h>
-#include <sdl/SDL_render.h>
-#include <sdl/SDL_TTF.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_render.h>
+#include <SDL2/SDL_TTF.h>
 
 #include "sprite.h"
 #include "renderer.h"
@@ -77,7 +77,7 @@ int main(int, char**) {
 
 	GameState::change_game_state((int)cardgame_state_id);
 
-	g_sound_manager.play_file("assets/Town_-_Quiet_Country_Village.mp3");
+	//g_sound_manager.play_file_loop("assets/Town_-_Quiet_Country_Village.mp3");
 
 	while (!g_cvars.b_get("+quit")) {
 		sdl_event_pump();

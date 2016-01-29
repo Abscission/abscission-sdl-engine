@@ -1,7 +1,7 @@
 #include "renderer.h"
 #include "con_vars.h"
 
-#include <sdl/SDL_ttf.h>
+#include <SDL2/SDL_ttf.h>
 
 Renderer::Renderer(const char * title) {
 	init(title);

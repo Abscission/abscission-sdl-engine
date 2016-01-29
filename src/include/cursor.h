@@ -1,6 +1,6 @@
 #pragma once
 
-#include <sdl/SDL.h>
+#include <SDL2/SDL.h>
 
 inline SDL_Cursor* get_cursor() {
 	return SDL_GetCursor();

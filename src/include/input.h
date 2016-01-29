@@ -4,7 +4,7 @@
 #include <string>
 
 #include "con_vars.h"
-#include <sdl/SDL_keycode.h>
+#include <SDL2/SDL_keycode.h>
 
 //extern std::map <std::string, SDL_Keycode> keys;
 

@@ -112,7 +112,7 @@ void CardState::update() {
 				if (t_mode == TARGET_OWN_FIELD) {
 					int i = 0;
 					for (auto card = player_a.on_board.begin(), end = player_a.on_board.end(); card != end; ++card) {
-						SDL_Rect r = { 20 + int(card_size_x * 0.5 + 20) * i , g_renderer->height - 276, int(card_size_x * 0.5), int(card_size_y * 0.5) };
+						SDL_Rect r = { 20 + i * int(card_size_x * 0.5f + 20), g_renderer->height - 276 - 20 - int(card_size_y * 0.5f), card_size_x / 2, card_size_y / 2 };
 						if (is_mouse_over(r)) {
 
 							if (card->type == ct_monster) {
@@ -131,14 +131,14 @@ void CardState::update() {
 				else if (t_mode == TARGET_ENEMY_FIELD) {
 					int i = 0;
 					for (auto card_id = player_b.on_board.begin(), end = player_b.on_board.end(); card_id != end; ++card_id) {
-						SDL_Rect card_hitbox = SDL_Rect{ 20 + i * int(card_size_x * 0.5f + 20), g_renderer->height - 276 - 20 - int(card_size_y * 0.5f), card_size_x / 2, card_size_y / 2 };
+						SDL_Rect card_hitbox = SDL_Rect{ 20 + i * int(card_size_x * 0.5f + 20), card_size_y / 4 + 20, card_size_x / 2, card_size_y / 2 };
 						if (is_mouse_over(card_hitbox)) {
 							//the card has been clicked on
 							Card* _own_card = hand_card_c;
 							Card* _enemy_card = &*card_id;
 
 							if (_own_card->s_attack > _enemy_card->s_defence) {
-								OutputDebugStringA("U kill him\n");
+								player_b.on_board.erase(card_id);
 							}
 							else {
 
@@ -150,10 +150,11 @@ void CardState::update() {
 							}
 							player_a.hand.erase(it);
 							field_card_selected = -1;
-
+							
 							player_turn = false;
 							phase = TURN_PHASE_DRAW;
 							t_mode = TARGET_OWN_HAND;
+							break;
 						}
 						i++;
 					}
@@ -216,6 +217,8 @@ void CardState::draw() {
 
 	g_renderer->draw_rect(g_renderer->width - 500, 60, 480, 32, SDL_Color{ 101,154,252,255 });
 	g_renderer->draw_text(target_name, g_renderer->width - 498, 62, 28);
+
+	g_renderer->draw_rect(g_renderer->width - 300, 100, 280, 300, SDL_Color{ 255, 255, 255, 60 });
 
 	int i = 0;
 
