@@ -251,6 +251,7 @@
     <ClInclude Include="..\..\src\include\windowing.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\audio.cpp" />
     <ClCompile Include="..\..\src\card.cpp" />
     <ClCompile Include="..\..\src\database.cpp" />
     <ClCompile Include="..\..\src\gs_cardgame.cpp" />
@@ -260,10 +261,9 @@
     <ClCompile Include="..\..\src\events.cpp" />
     <ClCompile Include="..\..\src\game_state.cpp" />
     <ClCompile Include="..\..\src\gs_menu.cpp" />
-    <ClCompile Include="..\..\src\include\audio.cpp" />
-    <ClCompile Include="..\..\src\include\player.cpp" />
     <ClCompile Include="..\..\src\input.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
+    <ClCompile Include="..\..\src\player.cpp" />
     <ClCompile Include="..\..\src\renderer.cpp" />
     <ClCompile Include="..\..\src\sprite.cpp" />
     <ClCompile Include="..\..\src\windowing.cpp" />

@@ -326,16 +326,16 @@
     <ClCompile Include="..\..\src\gs_cardgame.cpp">
       <Filter>Source Files\game_states</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\include\player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\database.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gs_menu.cpp">
       <Filter>Source Files\game_states</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\include\audio.cpp">
+    <ClCompile Include="..\..\src\audio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
