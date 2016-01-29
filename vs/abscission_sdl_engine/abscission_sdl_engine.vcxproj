@@ -170,6 +170,7 @@
     <ClInclude Include="..\..\src\include\events.h" />
     <ClInclude Include="..\..\src\include\game_state.h" />
     <ClInclude Include="..\..\src\include\input.h" />
+    <ClInclude Include="..\..\src\include\player.h" />
     <ClInclude Include="..\..\src\include\renderer.h" />
     <ClInclude Include="..\..\src\include\sdl\begin_code.h" />
     <ClInclude Include="..\..\src\include\sdl\close_code.h" />
@@ -247,12 +248,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\card.cpp" />
+    <ClCompile Include="..\..\src\database.cpp" />
     <ClCompile Include="..\..\src\gs_cardgame.cpp" />
     <ClCompile Include="..\..\src\config.cpp" />
     <ClCompile Include="..\..\src\console.cpp" />
     <ClCompile Include="..\..\src\con_vars.cpp" />
     <ClCompile Include="..\..\src\events.cpp" />
     <ClCompile Include="..\..\src\game_state.cpp" />
+    <ClCompile Include="..\..\src\include\player.cpp" />
     <ClCompile Include="..\..\src\input.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
     <ClCompile Include="..\..\src\renderer.cpp" />

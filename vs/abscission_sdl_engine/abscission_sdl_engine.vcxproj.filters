@@ -273,6 +273,9 @@
     <ClInclude Include="..\..\src\include\game_state.h">
       <Filter>Header Files\game_states</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\include\player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\con_vars.cpp">
@@ -310,6 +313,12 @@
     </ClCompile>
     <ClCompile Include="..\..\src\gs_cardgame.cpp">
       <Filter>Source Files\game_states</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\include\player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\database.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

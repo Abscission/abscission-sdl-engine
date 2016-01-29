@@ -3,18 +3,18 @@
 
 #include <sdl/SDL_ttf.h>
 
-Renderer::Renderer(int width, int height, const char * title) {
-	init(width, height, title);
+Renderer::Renderer(const char * title) {
+	init(title);
 }
 
-void Renderer::init(int width, int height, const char * title) {
-	width = atoi(g_cvars.get("r_resolution_x").c_str());
-	height = atoi(g_cvars.get("r_resolution_y").c_str());
+void Renderer::init(const char * title) {
+	this->width = atoi(g_cvars.get("r_resolution_x").c_str());
+	this->height = atoi(g_cvars.get("r_resolution_y").c_str());
 	if (window) {
-		SDL_SetWindowSize(window, width, height);
+		SDL_SetWindowSize(window, this->width, this->height);
 	}
 	else {
-		window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, 0);
+		window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, this->width, this->height, 0);
 	}
 	if (!renderer) renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 }
@@ -36,14 +36,11 @@ void Renderer::draw_sprite(Image & spr, int x, int y, float scale) {
 	SDL_RenderCopy(renderer, spr.texture, 0, &dst);
 }
 
-SDL_Rect Renderer::draw_text(const char * text, int x, int y, int font_size, SDL_Color c) {
-	static TTF_Font *fonts[500];
-	if (fonts[font_size] == nullptr) {
-		fonts[font_size] = TTF_OpenFont("open_sans.ttf", font_size);
-	}
+static TTF_Font *fonts[100];
 
-	SDL_Surface *text_surface;
-	text_surface = TTF_RenderText_Blended_Wrapped(fonts[font_size], text, c, 500);
+SDL_Rect Renderer::draw_text(const char * text, int x, int y, int font_size, SDL_Color c, int wrap_length) {
+
+	SDL_Surface *text_surface = draw_text_to_surface(text, font_size, c, wrap_length);
 	
 	SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, text_surface);
 
@@ -57,4 +54,14 @@ SDL_Rect Renderer::draw_text(const char * text, int x, int y, int font_size, SDL
 	SDL_DestroyTexture(texture);
 
 	return rect;
+}
+
+SDL_Surface* Renderer::draw_text_to_surface(const char * text, int font_size, SDL_Color c, int wrap_length) {
+	if (fonts[font_size] == nullptr) {
+		fonts[font_size] = TTF_OpenFont("open_sans.ttf", font_size);
+	}
+
+	SDL_Surface *text_surface = TTF_RenderText_Blended_Wrapped(fonts[font_size], text, c, wrap_length);
+
+	return text_surface;
 }

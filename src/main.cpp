@@ -16,6 +16,8 @@
 
 #include "database.h"
 #include "card.h"
+#include "game_state.h"
+
 
 Renderer* g_renderer;
 
@@ -29,18 +31,11 @@ int main(int, char**) {
 
 	SDL_StopTextInput();
 
-	console.run_command("r_resolution_x 800");
-	console.run_command("r_resolution_y 600");
+	Config c("test.cfg");
+	c.Reload();
 
 	Renderer r;
 	g_renderer = &r;
-
-	Image s;
-	s.load(r.renderer, "test.agi");
-
-	Config c("test.cfg");
-	c.Set("bind t +right");
-	c.Reload();
 
 	console.run_command("bind escape +quit");
 
@@ -54,53 +49,26 @@ int main(int, char**) {
 
 	g_input_manager.save_bindings("bindings.cfg");
 
-	float pos = 100;
-	
-	Window w;
-	w.open();
-	w.close();
-
-	Card a("Generic Monster", "This fearsome beast will be so generic it\nmakes you cringe.");
+	Card a("Generic Monster", "This fearsome beast will be so generic it makes you cringe.");
 	a.picture.load(r.renderer, "assets/generic monster.agi");
 
-	Database<Card> cards;
+	Card b("Yellow Monster", "This beast is much better than the Generic Monster because of its apealing yellow colour.");
+	b.picture.load(r.renderer, "assets/yellow monster.agi");
 
-	cards.set(a);
+	g_card_db.set(a);
+	g_card_db.set(b);
 
-	float card_x = 4;
-	float card_y = 4;
-	float card_scale = 0.5f;
+	CardState cgs;
+	GameState::register_game_state((GameState*)&cgs);
+	GameState::change_game_state(0);
 
 	while (!g_cvars.b_get("+quit")) {
 		sdl_event_pump();
 
-		if (g_cvars.b_get("+left")) {
-			card_x-= 0.05f;
-		}
-
-		if (g_cvars.b_get("+right")) {
-			card_x += 0.05f;
-		}
-
-		if (g_cvars.b_get("+scaleup")) {
-			card_scale += 0.005f;
-		}
-
-		if (g_cvars.b_get("+scaledown")) {
-			card_scale -= 0.005f;
-		}
-
-
-		r.draw_text("Hello, World!\ntest", 100, 100, 25);
-
-		r.draw_sprite(s, (int)pos, 10, 50);
-
-		w.update_and_draw();
+		GameState::current->update();
+		GameState::current->draw();
 
 		console.draw();
-
-		a.render((int)card_x, (int)card_y, card_scale);
-
 		r.refresh();
 	}
 

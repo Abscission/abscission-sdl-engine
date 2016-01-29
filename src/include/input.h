@@ -23,7 +23,6 @@ public:
 	void save_bindings(std::string filename);
 	void load_bindings(std::string filename);
 	
-
 	std::string text_input;
 
 	bool enter;

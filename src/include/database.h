@@ -1,6 +1,7 @@
 #pragma once
 
 #include "types.h"
+#include "card.h"
 #include <vector>
 #include <stdexcept>
 
@@ -28,3 +29,5 @@ inline u64 Database<T>::set(T & d) {
 	_data.push_back(d);
 	return _data.size() - 1;
 }
+
+extern Database<Card> g_card_db;

@@ -1,15 +1,17 @@
 #pragma once
 
 #include <vector>
+#include "player.h"
+
 
 class GameState {
 public:
-	//std::vector<GameState*> states;
 	static GameState* current;
+	static std::vector<GameState*> states;
 
 public:
-	//static void register_game_state(GameState* G);
-	//static void change_game_state(int i);
+	static void register_game_state(GameState* G);
+	static void change_game_state(int i);
 
 	virtual void init() = 0;
 	virtual void shutdown() = 0;
@@ -18,7 +20,13 @@ public:
 	virtual void draw() = 0;
 };
 
-class CardState {
+class CardState : public GameState {
+private:
+	Player player_a;
+	Player player_b;
+
+	bool player_turn;
+
 public:
 	virtual void init() final;
 	virtual void shutdown() final;

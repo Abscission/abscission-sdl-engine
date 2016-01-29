@@ -10,6 +10,9 @@ private:
 	int s_defence;
 	int s_agility;
 
+	SDL_Surface* surface;
+	SDL_Texture* texture;
+	float surface_scale = 0.0f;
 public:
 	Card(std::string name, std::string description);
 
