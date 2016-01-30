@@ -63,6 +63,10 @@ void Card::render(int x, int y, float scale, bool flip) {
 	attk << s_attack;
 	def << s_defence;
 	agi << s_mv_speed;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2cd3a5aaca52d9454ffc2dced48458f00ff3feea
 
 	if (flip) {
 		g_renderer->draw_sprite(background, x, y, scale, 180);

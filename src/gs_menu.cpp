@@ -30,6 +30,7 @@ void MenuState::draw()
 	if (g_input_manager.click_thisframe) {
 		if (is_mouse_over(play_hitbox)) {
 			//play
+
 		}
 		if (is_mouse_over(options_hitbox)) {
 			//options
