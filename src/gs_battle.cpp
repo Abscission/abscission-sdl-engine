@@ -37,12 +37,12 @@ void BattleState::update() {
 	double performance_frequency = SDL_GetPerformanceFrequency();
 	double delta_time = double(((this_time - last_time) * 1000) / performance_frequency);
 
-	float mv_speed = card_a.s_mv_speed + card_a.s_mv_speed_boost * 0.1f;
-	float atk_speed = card_a.s_atk_speed + card_a.atk_speed_boost * 0.1f;
+	float mv_speed = card_a->s_mv_speed + card_a->s_mv_speed_boost * 0.1f;
+	float atk_speed = card_a->s_atk_speed * 0.1f;
 
 
 	if (g_cvars.b_get("+left")) {
-		monster_a_position.x -= (0.01f * card_a->s_agility * delta_time);
+		//monster_a_position.x -= (0.01f * card_a->s_agility * delta_time);
 	}
 
 	if (g_cvars.b_get("+right")) {
@@ -54,7 +54,7 @@ void BattleState::update() {
 	}
 
 	if (card_b->s_defence <= 0) {
-		bool player_a_won = new bool;
+		bool* player_a_won = new bool;
 		*player_a_won = true;
 
 	}
