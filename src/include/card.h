@@ -20,8 +20,6 @@ enum equipment_effect {
 
 class Card {
 private:
-
-
 	SDL_Surface* surface;
 	SDL_Texture* texture;
 	float surface_scale = 0.0f;
@@ -30,7 +28,7 @@ private:
 	static Image card_template_equip;
 
 public:
-	Card(std::string name, std::string description, int attack = 400, int defence = 200, int atk_speed = 200, int mv_speed = 200,  card_type = ct_monster);
+	Card(std::string name, std::string description, int attack = 400, int defence = 200, int atk_speed = 200, int mv_speed = 200, card_type = ct_monster);
 
 	std::string name;
 	std::string description;

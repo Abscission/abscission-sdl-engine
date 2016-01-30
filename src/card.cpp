@@ -64,7 +64,6 @@ void Card::render(int x, int y, float scale, bool flip) {
 	def << s_defence;
 	agi << s_mv_speed;
 
-
 	if (flip) {
 		g_renderer->draw_sprite(background, x, y, scale, 180);
 		g_renderer->draw_sprite(picture, x + int(4.0f * scale), y + int(card_size_y * scale) - int(246 * scale) - int(41.f * scale), scale, 180);

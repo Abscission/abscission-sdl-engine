@@ -170,6 +170,7 @@
     <ClInclude Include="..\..\src\include\database.h" />
     <ClInclude Include="..\..\src\include\events.h" />
     <ClInclude Include="..\..\src\include\game_state.h" />
+    <ClInclude Include="..\..\src\include\gs_battle.h" />
     <ClInclude Include="..\..\src\include\gs_cardgame.h" />
     <ClInclude Include="..\..\src\include\gs_menu.h" />
     <ClInclude Include="..\..\src\include\gs_options.h" />
@@ -255,6 +256,7 @@
     <ClCompile Include="..\..\src\audio.cpp" />
     <ClCompile Include="..\..\src\card.cpp" />
     <ClCompile Include="..\..\src\database.cpp" />
+    <ClCompile Include="..\..\src\gs_battle.cpp" />
     <ClCompile Include="..\..\src\gs_cardgame.cpp" />
     <ClCompile Include="..\..\src\config.cpp" />
     <ClCompile Include="..\..\src\console.cpp" />
