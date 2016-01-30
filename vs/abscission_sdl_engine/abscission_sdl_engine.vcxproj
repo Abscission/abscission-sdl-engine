@@ -172,6 +172,7 @@
     <ClInclude Include="..\..\src\include\game_state.h" />
     <ClInclude Include="..\..\src\include\gs_cardgame.h" />
     <ClInclude Include="..\..\src\include\gs_menu.h" />
+    <ClInclude Include="..\..\src\include\gs_options.h" />
     <ClInclude Include="..\..\src\include\input.h" />
     <ClInclude Include="..\..\src\include\player.h" />
     <ClInclude Include="..\..\src\include\renderer.h" />
@@ -261,6 +262,7 @@
     <ClCompile Include="..\..\src\events.cpp" />
     <ClCompile Include="..\..\src\game_state.cpp" />
     <ClCompile Include="..\..\src\gs_menu.cpp" />
+    <ClCompile Include="..\..\src\gs_options.cpp" />
     <ClCompile Include="..\..\src\input.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
     <ClCompile Include="..\..\src\player.cpp" />

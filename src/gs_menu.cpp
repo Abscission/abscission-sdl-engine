@@ -1,5 +1,6 @@
 #include "gs_menu.h"
 #include "gs_cardgame.h"
+#include "gs_options.h"
 #include "renderer.h"
 #include "audio.h"
 #include "input.h"
@@ -34,7 +35,8 @@ void MenuState::draw() {
 			GameState::create_game_state(c);
 		}
 		if (is_mouse_over(options_hitbox)) {
-			//options
+			OptionState* o = new OptionState;
+			GameState::create_game_state(o);
 		}
 		if (is_mouse_over(credits_hitbox)) {
 			//credits
