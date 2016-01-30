@@ -264,5 +264,5 @@ _Pvt_Extensions
 #other stuff
 *.cfg
 vs/.suo
-
+vs/abscission_sdl_engine.sdf
 
