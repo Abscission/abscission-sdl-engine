@@ -16,6 +16,8 @@ public:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 
+
+	SDL_Color bgc;
 public:
 	
 	int width;
@@ -30,6 +32,9 @@ public:
 	//draw the sprite spr at location {x, y} with a scale factor of scale
 	void draw_sprite(Image& spr, int x, int y, float scale = 1.0f);
 	void draw_sprite(Image& spr, int x, int y, float scale, double angle);
+
+	SDL_Color get_background_color();
+	void set_background_color(SDL_Color c);
 
 	void draw_rect(int x, int y, int w, int h, SDL_Color c = SDL_Color{ 0,0,0,255 });
 

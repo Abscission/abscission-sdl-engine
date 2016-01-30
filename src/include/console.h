@@ -20,6 +20,8 @@ private:
 
 	bool resizing_x = false;
 	bool resizing_y = false;
+
+	std::string console_backlog = "";
 public:
 	void draw();
 	std::string run_command(std::string command);

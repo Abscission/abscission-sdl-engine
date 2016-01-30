@@ -33,6 +33,8 @@ public:
 	std::string name;
 	std::string description;
 	Image picture;
+	Image in_game;
+
 	card_type type;
 	equipment_effect e;
 
@@ -50,7 +52,6 @@ public:
 
 	float mv_speed;
 	float atk_speed;
-
 
 	void attack(Card& other);
 	void render(int x, int y, float scale, bool flip = false);

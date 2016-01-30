@@ -54,13 +54,16 @@ int main(int, char**) {
 
 	g_sound_manager.init();
 
-	Card a("Generic Monster", "This fearsome beast will be so generic it makes you cringe.", 800);
+	Card a("Generic Monster", "This fearsome beast will be so generic it makes you cringe.", 400, 200, 200, 200);
 	a.picture.load(r.renderer, "assets/generic monster.agi");
+	a.in_game.load(r.renderer, "assets/red monster top.agi");
 
-	Card b("Yellow Monster", "This beast is much better than the Generic Monster because of its apealing yellow colour.");
+	Card b("Yellow Monster", "This beast is much better than the Generic Monster because of its apealing yellow colour.", 400, 200, 200, 200);
 	b.picture.load(r.renderer, "assets/yellow monster.agi");
-	
+	b.in_game.load(r.renderer, "assets/yellow monster top.agi");
+
 	Card d("Sword of Cutting", "This is a pretty generic equipment card. It would prbably go well with the Generic Monster.", 0, 0, 0, ct_equipment);
+	d.type = ct_equipment;
 	d.picture.load(r.renderer, "assets/sword.agi");
 	d.e = e_attackboost;
 	d.attack_boost = 100;

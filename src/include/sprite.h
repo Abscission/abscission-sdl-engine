@@ -20,11 +20,13 @@ private:
 	SDL_Texture* texture;
 
 	//The width and height of the sprite
-	unsigned int width;
-	unsigned int height;
+
 	unsigned int has_transparency;
 
 public:
+	unsigned int width;
+	unsigned int height;
+
 	bool loaded;
 
 	void load(SDL_Renderer* renderer, const char * filename);

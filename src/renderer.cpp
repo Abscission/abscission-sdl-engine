@@ -11,7 +11,7 @@ void Renderer::init(const char * title) {
 	this->width = atoi(g_cvars.get("r_resolution_x").c_str());
 	this->height = atoi(g_cvars.get("r_resolution_y").c_str());
 
-	#ifdef __WIN32
+	#ifdef _WIN32
 	if (window != nullptr) {
 		SDL_SetWindowSize(window, this->width, this->height);
 	}
@@ -40,7 +40,7 @@ Renderer::~Renderer() {
 void Renderer::refresh() {
 	SDL_RenderPresent(renderer);
 
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+	SDL_SetRenderDrawColor(renderer, bgc.r, bgc.g, bgc.b, bgc.a);
 	SDL_RenderClear(renderer);
 }
 
@@ -88,4 +88,13 @@ SDL_Surface* Renderer::draw_text_to_surface(const char * text, int font_size, SD
 	SDL_Surface *text_surface = TTF_RenderText_Blended_Wrapped(fonts[font_size], text, c, wrap_length);
 
 	return text_surface;
+}
+
+
+SDL_Color Renderer::get_background_color() {
+	return bgc;
+}
+
+void Renderer::set_background_color(SDL_Color c) {
+	bgc = c;
 }

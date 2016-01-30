@@ -16,7 +16,6 @@
 
 void Console::draw() {
 	Renderer& r = *g_renderer;
-	static std::string console_backlog = "";
 
 	if (g_cvars.b_get("+console")) {
 
@@ -136,7 +135,7 @@ void Console::draw() {
 }
 
 
-std::string Console::run_command(std::string command) {	
+std::string Console::run_command(std::string command) {
 	std::map <std::string, SDL_Keycode> keys{
 		//Top row
 		{ "escape", SDLK_ESCAPE },{ "f1", SDLK_F1 },{ "f2", SDLK_F2 },{ "f3", SDLK_F3 },{ "f4", SDLK_F4 },{ "f5", SDLK_F5 },{ "f6", SDLK_F6 },{ "f7", SDLK_F7 },{ "f8", SDLK_F8 },{ "f9", SDLK_F9 },{ "f10", SDLK_F10 },{ "f11", SDLK_F11 },{ "f12", SDLK_F12 },
@@ -148,8 +147,8 @@ std::string Console::run_command(std::string command) {
 		{ "capslock", SDLK_CAPSLOCK },{ "a", SDLK_a },{ "s", SDLK_s },{ "d", SDLK_d },{ "f",SDLK_f },{ "g", SDLK_g },{ "h",SDLK_h },{ "j", SDLK_j },{ "k", SDLK_k },{ "l", SDLK_l },{ ";", SDLK_SEMICOLON },{ "'", SDLK_QUOTE },{ "enter", SDLK_KP_ENTER },
 		//Fifth row
 		{ "shift", SDLK_LSHIFT },{ "left_shift", SDLK_LSHIFT },{ "z", SDLK_z },{ "x", SDLK_x },{ "c", SDLK_c },{ "v", SDLK_v },{ "b", SDLK_b },{ "n", SDLK_n },{ "m", SDLK_m },{ "comma", SDLK_COMMA },{ ",", SDLK_COMMA },{ "period", SDLK_PERIOD },{ ".", SDLK_PERIOD },{ "/", SDLK_SLASH},{ "right_shift", SDLK_RSHIFT },
-	    //Bottom row
-		{ "control", SDLK_LCTRL },{ "ctrl", SDLK_LCTRL },{ "left_control", SDLK_LCTRL },{ "left_ctrl", SDLK_LCTRL },{ "windowskey", SDLK_APPLICATION},{ "windows", SDLK_APPLICATION },{ "win", SDLK_APPLICATION },{ "alt", SDLK_LALT },{ "left_alt", SDLK_LALT },{ "space", SDLK_SPACE },{ "right_alt", SDLK_RALT },{ "right_ctrl", SDLK_RCTRL },{ "right_control", SDLK_RCTRL },	
+		//Bottom row
+		{ "control", SDLK_LCTRL },{ "ctrl", SDLK_LCTRL },{ "left_control", SDLK_LCTRL },{ "left_ctrl", SDLK_LCTRL },{ "windowskey", SDLK_APPLICATION},{ "windows", SDLK_APPLICATION },{ "win", SDLK_APPLICATION },{ "alt", SDLK_LALT },{ "left_alt", SDLK_LALT },{ "space", SDLK_SPACE },{ "right_alt", SDLK_RALT },{ "right_ctrl", SDLK_RCTRL },{ "right_control", SDLK_RCTRL },
 		//Arrow keys
 		{ "up", SDLK_UP },{ "down", SDLK_DOWN },{ "left", SDLK_LEFT },{ "right", SDLK_RIGHT },
 		//Numberpad num
@@ -173,13 +172,16 @@ std::string Console::run_command(std::string command) {
 		g_input_manager.bind(keys.at(key), binding);
 
 		output << "Binding " << key << " to " << binding;
-		
+
 	}
 	else if (cmd == "bindtoggle") {
 		delim = params.find(" ");
 		std::string key = params.substr(0, delim);
 		std::string binding = params.substr(delim + 1);
 		g_input_manager.bind_toggle(keys.at(key), binding);
+	}
+	else if (cmd == "echo") {
+		output << params;
 	}
 	else if (cmd == "c") {
 		delim = params.find(" ");

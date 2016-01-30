@@ -31,6 +31,11 @@ void Card::render(int x, int y, float scale, bool flip) {
 		card_template_equip.load(g_renderer->renderer, "assets/card template equipment.agi");
 	}
 
+	if (type == ct_equipment) {
+		int i = 1 + 1;
+		i;
+	}
+
 	Image& background = type == ct_monster ? card_template_monster : card_template_equip;
 
 	/*if (abs(scale - surface_scale) > 0.01f || !surface) {

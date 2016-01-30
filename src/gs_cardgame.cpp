@@ -2,6 +2,7 @@
 #include "gs_cardgame.h"
 #include "gs_battle.h"
 
+#include "console.h"
 #include "database.h"
 #include "con_vars.h"
 #include "renderer.h"
@@ -30,8 +31,13 @@ void CardState::update() {
 
 	if (in_battle) {
 		//just finished a battle
+
+		phase = TURN_PHASE_DRAW;
+		player_turn = !player_turn;
+
 		bool player_won = *(bool*)GameState::returned;
 		if (player_won) {
+			console.run_command("echo you won\n");
 			//player_b.on_board.erase(player_b.on_board.begin() + i);
 		}
 	}
@@ -190,6 +196,7 @@ void CardState::update() {
 				Card crd = g_card_db.get(*card);
 
 				//check if card is playable
+				
 
 				if (crd.type == ct_monster) {
 					//if so, play it

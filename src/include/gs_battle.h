@@ -15,6 +15,7 @@ class BattleState : public GameState {
 	v2 monster_a_position;
 	v2 monster_b_position;
 
+	SDL_Color bg;
 
 public:
 	BattleState(Card* a, Card* b);
