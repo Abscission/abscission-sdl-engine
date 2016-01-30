@@ -7,7 +7,11 @@
 
 void Image::load(SDL_Renderer* renderer, const char * filename) {
 	FILE* file;
+	#ifdef __WIN32
 	fopen_s(&file, filename, "rb");
+	#else
+	file = fopen(filename, "rb");
+	#endif
 
 	if (!file) {
 		printf("Failed to load file %s\n", filename);
@@ -20,7 +24,11 @@ void Image::load(SDL_Renderer* renderer, const char * filename) {
 
 	byte* mem = (byte*)malloc(len);
 	
+	#ifdef __WIN32
 	fread_s((void*)mem, len, len, 1, file);
+	#else
+	fread((void*)mem, len, 1, file);
+	#endif
 	fclose(file);
 
 	Header* header = (Header*)mem;
@@ -35,7 +43,15 @@ void Image::load(SDL_Renderer* renderer, const char * filename) {
 	int pitch;
 
 	SDL_LockTexture(texture, 0, &pixels, &pitch);
+
+	printf("%s\n", SDL_GetError());
+
+	#ifdef __WIN32
 	memcpy_s(pixels, header->length, mem + sizeof(Header), header->length);
+	#else
+	memcpy(pixels, (void*)(mem + sizeof(Header)), header->length);
+	#endif
+
 	SDL_UnlockTexture(texture);
 
 	free(mem);

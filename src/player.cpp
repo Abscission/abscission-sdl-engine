@@ -24,7 +24,7 @@ Player::Player() {
 	draw();
 	draw();
 
-	g_sound_manager.play_file("assets/card draw.ogg");
+	//g_sound_manager.play_file("assets/card draw.ogg");
 }
 
 void Player::shuffle() {

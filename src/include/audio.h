@@ -5,8 +5,8 @@
 class SoundManager {
 public:
 	void init();
-	void play_file(char* file);
-	void play_file_loop(char* file);
+	void play_file(const char* file);
+	void play_file_loop(const char* file);
 
 };
 
