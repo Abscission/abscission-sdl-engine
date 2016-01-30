@@ -22,6 +22,7 @@
 #include "game_state.h"
 #include "gs_menu.h"
 #include "gs_cardgame.h"
+#include "gs_battle.h"
 
 Renderer* g_renderer;
 
@@ -70,7 +71,6 @@ int main(int, char**) {
 
 	MenuState menu_state;
 	GameState::create_game_state((GameState*)&menu_state);
-
 
 	while (!g_cvars.b_get("+quit")) {
 		sdl_event_pump();

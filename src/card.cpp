@@ -5,13 +5,14 @@
 #include "game_state.h"
 #include "renderer.h"
 
-Card::Card(std::string name, std::string description, int attack, int defence, int agility, card_type t) {
+Card::Card(std::string name, std::string description, int attack, int defence, int atk_speed, int mv_speed, card_type t) {
 	this->name = name;
 	this->description = description;
 
 	s_attack = attack;
 	s_defence = defence;
-	s_agility = agility;
+	s_atk_speed = atk_speed;
+	s_mv_speed = mv_speed;
 
 	type = t;
 }

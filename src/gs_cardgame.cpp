@@ -5,6 +5,7 @@
 #include "renderer.h"
 #include "input.h"
 #include "abscission_math.h"
+#include "audio.h"
 
 void CardState::init() {
 	player_a = Player();
@@ -15,10 +16,12 @@ void CardState::init() {
 
 	card_back.load(g_renderer->renderer, "assets/card back.agi");
 	background.load(g_renderer->renderer, "assets/wood.agi");
+
+	g_sound_manager.play_file_loop("assets/Town_-_Quiet_Country_Village.mp3");
 }
 
 void CardState::shutdown() {
-
+	
 }
 
 void CardState::update() {
