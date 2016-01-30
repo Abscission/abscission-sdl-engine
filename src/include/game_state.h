@@ -1,17 +1,19 @@
 #pragma once
 
 #include <vector>
+#include <deque>
 #include "player.h"
 
 
 class GameState {
-public:
-	static GameState* current;
-	static std::vector<GameState*> states;
+private:
+	void* returned;
 
 public:
-	static size_t register_game_state(GameState* G);
-	static void change_game_state(int i);
+	static std::deque<GameState*> gamestate_queue;
+
+	static void create_game_state(GameState* G);
+	static void close_current_state(void* ret);
 
 	virtual void init() = 0;
 	virtual void shutdown() = 0;

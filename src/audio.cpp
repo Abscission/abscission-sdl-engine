@@ -13,7 +13,7 @@ void SoundManager::play_file(char * file) {
 
 void SoundManager::play_file_loop(char * file) {
 	Mix_Music* music = Mix_LoadMUS(file);
-	Mix_PlayMusic(music, -1);
+	Mix_PlayMusic(music, -1); 
 }
 
 

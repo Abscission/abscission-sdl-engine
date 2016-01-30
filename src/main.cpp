@@ -69,21 +69,15 @@ int main(int, char**) {
 	g_card_db.set(d);
 
 	MenuState menu_state;
-	size_t menu_state_id = GameState::register_game_state((GameState*)&menu_state);
+	GameState::create_game_state((GameState*)&menu_state);
 
-	CardState cardgame_state;
-	size_t cardgame_state_id = GameState::register_game_state((GameState*)&cardgame_state);
-	if (menu_state_id) 1;
-
-	GameState::change_game_state((int)cardgame_state_id);
-
-	//g_sound_manager.play_file_loop("assets/Town_-_Quiet_Country_Village.mp3");
+	g_sound_manager.play_file_loop("assets/Town_-_Quiet_Country_Village.mp3");
 
 	while (!g_cvars.b_get("+quit")) {
 		sdl_event_pump();
 
-		GameState::current->update();
-		GameState::current->draw();
+		GameState::gamestate_queue.back()->update();
+		GameState::gamestate_queue.back()->draw();
 
 		console.draw();
 		r.refresh();

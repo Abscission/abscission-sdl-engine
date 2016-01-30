@@ -1,16 +1,14 @@
 #include "game_state.h"
 
+std::deque<GameState*> GameState::gamestate_queue;
 
-size_t GameState::register_game_state(GameState * G) {
-	states.push_back(G);
-	return states.size() - 1;
+void GameState::create_game_state(GameState * G) {
+	gamestate_queue.push_back(G);
+	G->init();
 }
 
-void GameState::change_game_state(int i) {
-	if (current) current->shutdown();
-	current = states[i];
-	current->init();
+void GameState::close_current_state(void* ret) {
+	gamestate_queue.back()->shutdown();
+	gamestate_queue.pop_back();
+	gamestate_queue.back()->returned = ret;
 }
-
-GameState* GameState::current;
-std::vector<GameState*> GameState::states;
