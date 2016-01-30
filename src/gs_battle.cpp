@@ -15,11 +15,11 @@ void BattleState::init() {
 	//monster_a.load(g_renderer->renderer, card_a.picture);
 	//monster_b.load(g_renderer->renderer, "assets/yellow monster.agi");
 
-	int screen_height=g_renderer->height;
-	int screen_width=g_renderer->width;
+	int screen_height = g_renderer->height;
+	int screen_width = g_renderer->width;
 
-	monster_a_position.x = screen_width / 2;
-	monster_a_position.y = screen_height / 2;
+	monster_a_position.x = float(screen_width / 2);
+	monster_a_position.y = float(screen_height / 2);
 }
 
 
@@ -34,19 +34,20 @@ void BattleState::update() {
 	last_time = this_time;
 	this_time = SDL_GetPerformanceCounter();
 
-	double performance_frequency = SDL_GetPerformanceFrequency();
+	u64 performance_frequency = SDL_GetPerformanceFrequency();
 	double delta_time = double(((this_time - last_time) * 1000) / performance_frequency);
 
-	float mv_speed = card_a.s_mv_speed + card_a.s_mv_speed_boost * 0.1f;
-	float atk_speed = card_a.s_atk_speed + card_a.atk_speed_boost * 0.1f;
+	float mv_speed = card_a->s_mv_speed + card_a->s_mv_speed_boost * 0.1f;
+	float atk_speed = card_a->s_atk_speed * 0.1f;
 
+	if (atk_speed) 1;
 
 	if (g_cvars.b_get("+left")) {
-		monster_a_position.x -= (0.01f * card_a->s_agility * delta_time);
+		//monster_a_position.x -= (0.01f * card_a->s_agility * delta_time);
 	}
 
 	if (g_cvars.b_get("+right")) {
-		monster_a_position.x += (0.1f * delta_time);
+		monster_a_position.x += float(mv_speed * delta_time);
 	}
 
 	if (g_cvars.b_get("+down")){
@@ -54,7 +55,7 @@ void BattleState::update() {
 	}
 
 	if (card_b->s_defence <= 0) {
-		bool player_a_won = new bool;
+		bool* player_a_won = new bool;
 		*player_a_won = true;
 
 	}
@@ -62,5 +63,5 @@ void BattleState::update() {
 }
 
 void BattleState::draw() {
-	g_renderer->draw_sprite(card_a->picture, monster_a_position.x, monster_a_position.y, 0.5f);
+	g_renderer->draw_sprite(card_a->picture, int(monster_a_position.x), int(monster_a_position.y), 0.5f);
 }

@@ -72,19 +72,6 @@ int main(int, char**) {
 	MenuState menu_state;
 	GameState::create_game_state((GameState*)&menu_state);
 
-<<<<<<< HEAD
-	CardState cardgame_state;
-	size_t cardgame_state_id = GameState::register_game_state((GameState*)&cardgame_state);
-	if (menu_state_id) 1;
-
-	BattleState battle_state(&b, &b);
-	size_t battle_state_id = GameState::register_game_state((GameState*)&battle_state);
-
-	GameState::change_game_state((int)battle_state_id);
-=======
-	g_sound_manager.play_file_loop("assets/Town_-_Quiet_Country_Village.mp3");
->>>>>>> 4730a19a0e50164c54e2d7df0993e5982f4ab2f0
-
 	while (!g_cvars.b_get("+quit")) {
 		sdl_event_pump();
 

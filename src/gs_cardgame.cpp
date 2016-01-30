@@ -1,5 +1,7 @@
 
 #include "gs_cardgame.h"
+#include "gs_battle.h"
+
 #include "database.h"
 #include "con_vars.h"
 #include "renderer.h"
@@ -140,13 +142,12 @@ void CardState::update() {
 							Card* _own_card = hand_card_c;
 							Card* _enemy_card = &*card_id;
 
-							if (_own_card->s_attack > _enemy_card->s_defence) {
-								player_b.on_board.erase(card_id);
-							}
-							else {
+							//TODO: OPEN A BATTLE
+							BattleState bs(_own_card, _enemy_card);
+							GameState::create_game_state(&bs);
+							break;
 
-							}
-
+							/*
 							auto it = player_a.hand.begin();
 							for (int j = 0; j < hand_card_selected; j++) {
 								it++;
@@ -158,6 +159,7 @@ void CardState::update() {
 							phase = TURN_PHASE_DRAW;
 							t_mode = TARGET_OWN_HAND;
 							break;
+							*/
 						}
 						i++;
 					}

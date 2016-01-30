@@ -288,6 +288,9 @@
     <ClInclude Include="..\..\src\include\sprite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\include\gs_battle.h">
+      <Filter>Header Files\game_states</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\con_vars.cpp">
@@ -337,6 +340,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\player.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gs_battle.cpp">
+      <Filter>Source Files\game_states</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
