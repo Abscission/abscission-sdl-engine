@@ -32,9 +32,14 @@ private:
 	u64* hand_card = 0;
 	Card* hand_card_c = 0;
 
+	Card* player_a_monster_battle;
+	Card* player_b_monster_battle;
+
+
 	int hand_card_selected = -1;
 	int field_card_selected = -1;
 
+	bool in_battle;
 
 public:
 	virtual void init() final;

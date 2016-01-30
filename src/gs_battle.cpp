@@ -35,15 +35,15 @@ void BattleState::update() {
 	this_time = SDL_GetPerformanceCounter();
 
 	u64 performance_frequency = SDL_GetPerformanceFrequency();
-	double delta_time = double(((this_time - last_time) * 1000) / performance_frequency);
+	double delta_time = double(float((this_time - last_time) * 1000) / performance_frequency);
 
-	card_a->mv_speed = (card_a->s_mv_speed + card_a->s_mv_speed_boost) * 0.1f;
-	card_a->atk_speed = (card_a->s_atk_speed + card_a->s_atk_speed_boost) * 0.1f;
+	card_a->mv_speed = float(card_a->s_mv_speed + card_a->s_mv_speed_boost) * 0.01f;
+	card_a->atk_speed = (card_a->s_atk_speed + card_a->s_atk_speed_boost) * 0.01f;
 
 	if (card_a->atk_speed) 1;
 
 	if (g_cvars.b_get("+left")) {
-		monster_a_position.x -= (card_a->mv_speed * delta_time);
+		monster_a_position.x -= float(card_a->mv_speed * delta_time);
 	}
 
 	if (g_cvars.b_get("+right")) {

@@ -27,6 +27,15 @@ void CardState::shutdown() {
 }
 
 void CardState::update() {
+
+	if (in_battle) {
+		//just finished a battle
+		bool player_won = *(bool*)GameState::returned;
+		if (player_won) {
+			//player_b.on_board.erase(player_b.on_board.begin() + i);
+		}
+	}
+
 	static bool end_was_down;
 	static bool draw_was_down;
 
@@ -142,9 +151,11 @@ void CardState::update() {
 							Card* _own_card = hand_card_c;
 							Card* _enemy_card = &*card_id;
 
+							in_battle = true;
+
 							//TODO: OPEN A BATTLE
-							BattleState bs(_own_card, _enemy_card);
-							GameState::create_game_state(&bs);
+							BattleState* bs = new BattleState(_own_card, _enemy_card);
+							GameState::create_game_state(bs);
 							break;
 
 							/*

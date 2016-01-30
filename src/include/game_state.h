@@ -7,9 +7,10 @@
 
 class GameState {
 private:
-	void* returned;
 
 public:
+	void* returned;
+
 	static std::deque<GameState*> gamestate_queue;
 
 	static void create_game_state(GameState* G);
