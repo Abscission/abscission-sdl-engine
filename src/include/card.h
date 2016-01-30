@@ -28,11 +28,7 @@ private:
 	static Image card_template_equip;
 
 public:
-<<<<<<< HEAD
 	Card(std::string name, std::string description, int attack = 400, int defence = 200, int atk_speed = 200, int mv_speed = 200, card_type = ct_monster);
-=======
-	Card(std::string name, std::string description, int attack = 400, int defence = 200, int atk_speed = 200, int mv_speed = 200,  card_type = ct_monster);
->>>>>>> 2cd3a5aaca52d9454ffc2dced48458f00ff3feea
 
 	std::string name;
 	std::string description;
