@@ -7,7 +7,7 @@
 
 void Image::load(SDL_Renderer* renderer, const char * filename) {
 	FILE* file;
-	#ifdef __WIN32
+	#ifdef _WIN32
 	fopen_s(&file, filename, "rb");
 	#else
 	file = fopen(filename, "rb");
@@ -24,7 +24,7 @@ void Image::load(SDL_Renderer* renderer, const char * filename) {
 
 	byte* mem = (byte*)malloc(len);
 	
-	#ifdef __WIN32
+	#ifdef _WIN32
 	fread_s((void*)mem, len, len, 1, file);
 	#else
 	fread((void*)mem, len, 1, file);
@@ -46,7 +46,7 @@ void Image::load(SDL_Renderer* renderer, const char * filename) {
 
 	printf("%s\n", SDL_GetError());
 
-	#ifdef __WIN32
+	#ifdef _WIN32
 	memcpy_s(pixels, header->length, mem + sizeof(Header), header->length);
 	#else
 	memcpy(pixels, (void*)(mem + sizeof(Header)), header->length);
