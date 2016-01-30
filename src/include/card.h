@@ -48,6 +48,9 @@ public:
 	int s_mv_speed_boost;
 	int s_atk_speed_boost;
 
+	float mv_speed;
+	float atk_speed;
+
 
 	void attack(Card& other);
 	void render(int x, int y, float scale, bool flip = false);
