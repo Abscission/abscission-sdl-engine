@@ -10,13 +10,26 @@ Renderer::Renderer(const char * title) {
 void Renderer::init(const char * title) {
 	this->width = atoi(g_cvars.get("r_resolution_x").c_str());
 	this->height = atoi(g_cvars.get("r_resolution_y").c_str());
-	if (window) {
+
+	#ifdef __WIN32
+	if (window != nullptr) {
 		SDL_SetWindowSize(window, this->width, this->height);
 	}
 	else {
-		window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, this->width, this->height, 0);
+		window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, this->width, this->height, SDL_WINDOW_OPENGL);
+		printf("%s\n", SDL_GetError());
+
 	}
-	if (!renderer) renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+	printf("%s\n", SDL_GetError());
+
+	#else
+
+	window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, this->width, this->height, SDL_WINDOW_OPENGL);
+	printf("%s\n", SDL_GetError());
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+	printf("%s\n", SDL_GetError());
+	#endif
 }
 
 Renderer::~Renderer() {

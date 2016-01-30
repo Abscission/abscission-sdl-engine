@@ -1,6 +1,5 @@
 #include "game_state.h"
 
-
 size_t GameState::register_game_state(GameState * G) {
 	states.push_back(G);
 	return states.size() - 1;

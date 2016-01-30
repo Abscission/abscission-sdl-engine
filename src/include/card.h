@@ -41,12 +41,14 @@ public:
 	//monster card stats
 	int s_attack;
 	int s_defence;
-	int s_agility;
+	int s_mv_speed;
+	int s_atk_speed;
 
 	//equipment stats
 	int attack_boost;
 	int defence_boost;
-	int agility_boost;
+	int s_mv_speed_boost;
+	int s_atk_speed_boost;
 
 
 	void attack(Card& other);

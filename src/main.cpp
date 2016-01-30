@@ -22,6 +22,7 @@
 #include "game_state.h"
 #include "gs_menu.h"
 #include "gs_cardgame.h"
+#include "gs_battle.h"
 
 Renderer* g_renderer;
 
@@ -75,9 +76,10 @@ int main(int, char**) {
 	size_t cardgame_state_id = GameState::register_game_state((GameState*)&cardgame_state);
 	if (menu_state_id) 1;
 
-	GameState::change_game_state((int)cardgame_state_id);
+	BattleState battle_state(&b, &b);
+	size_t battle_state_id = GameState::register_game_state((GameState*)&battle_state);
 
-	//g_sound_manager.play_file_loop("assets/Town_-_Quiet_Country_Village.mp3");
+	GameState::change_game_state((int)battle_state_id);
 
 	while (!g_cvars.b_get("+quit")) {
 		sdl_event_pump();
